@@ -17,10 +17,10 @@
                   <div class="form-group">
                     <input
                       type="text"
-                      v-model="user.username"
+                      v-model="user.name"
                       class="form-control form-control-lg"
                       id="exampleInputUsername1"
-                      placeholder="Username"
+                      placeholder="Name"
                     />
                   </div>
                   <div class="form-group">
@@ -30,6 +30,15 @@
                       class="form-control form-control-lg"
                       id="exampleInputEmail1"
                       placeholder="Email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      v-model="user.password"
+                      class="form-control form-control-lg"
+                      id="password"
+                      placeholder="Password"
                     />
                   </div>
                   <div class="mb-4">
@@ -71,14 +80,15 @@ export default {
   data() {
     return {
       user: {
-        username: null,
-        email: null
+        name: null,
+        email: null,
+        password: null
       }
     };
   },
   computed: {
     ...mapState({
-      newUser: state => state.authModule.userId,
+      newUser: state => state.authModule.userData,
       token: state => state.authModule.token
     }),
     ...mapGetters('authModule', {

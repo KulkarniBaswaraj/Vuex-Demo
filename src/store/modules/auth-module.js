@@ -6,49 +6,55 @@ import router from '../../router/index'
 Vue.use(Vuex);
 
 const state = {
+   userData: {},
    token: null,
-   userId: null
 };
 const getters = {
    getNewUserDetail(state, getters) {
-      return `Username is : ${state.userId}` 
+      return `Username is : ${state.userData}` 
    }
 };
 const mutations = {
    authUser(state, userData) {
-      state.token = userData._id;
-      state.userId = userData.username;
-      if (state.token && state.userId) {
+      console.log(userData);
+      state.token = userData.token;
+      state.userData = userData.user;
+      if (state.token) {
          localStorage.setItem('token', state.token);
-         router.push('/dashboard');
+         axios.defaults.headers.common['Authorization'] = state.token;
+         router.push('/home');
       }
    },
+   regUser(state, userData) {
+      router.push('/login');
+   }
 };
 const actions = {
 
    signUp({ commit }, authData) {
-      axios.post('/users', authData).then(res => {
+      axios.post('/registerUser', authData).then(res => {
          console.log(res);
-         commit('authUser', {
-            _id: res.data._id,
-            username: res.data.username
-         })
+         commit('regUser', res.data)
       }).catch(err => {
          console.log(err);
       });
    },
 
    login({ commit }, authData) {
-      axios.post('/users', authData).then(res => {
-         console.log(res);
-         commit('authUser', {
-            _id: res.data._id,
-            username: res.data.username
-         })
+      axios.post('/user/login', authData).then(res => {
+         commit('authUser', res.data)
       }).catch(err => {
          console.log(err);
       });
    },
+   logout() {
+      axios.post('/users/logout').then(res => {
+         localStorage.clear();
+         router.push('/login');
+      }).catch(e => {
+         console.log(e);
+      });
+   }
 };
 
 export default {

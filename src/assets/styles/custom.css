@@ -10,3 +10,6 @@ a {
 #header-s + .page-body-wrapper {
     padding-top: 70px;
 }
+.web-img-wrapper img {
+    width: 100%;
+}

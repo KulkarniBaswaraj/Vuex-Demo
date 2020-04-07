@@ -13,7 +13,7 @@
                   <div class="form-group">
                     <input
                       type="text"
-                      v-model="user.username"
+                      v-model="user.email"
                       class="form-control form-control-lg"
                       id="exampleInputEmail1"
                       placeholder="Username"
@@ -69,14 +69,14 @@ export default {
   data() {
     return {
       user: {
-        username: "",
+        email: "",
         password: ""
       }
     };
   },
   computed: {
     ...mapState({
-      newUser: state => state.authModule.userId,
+      newUser: state => state.authModule.userData,
       token: state => state.authModule.token
     }),
     ...mapGetters('authModule', {
@@ -90,6 +90,9 @@ export default {
     signIn() {
       this.$store.dispatch("authModule/login", this.user);
     }
+  },
+  created() {
+    localStorage.clear();
   }
 };
 </script>
