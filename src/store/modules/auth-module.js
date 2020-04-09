@@ -8,6 +8,7 @@ Vue.use(Vuex);
 const state = {
    userData: {},
    token: null,
+   resetToken: null
 };
 const getters = {
    getNewUserDetail(state, getters) {
@@ -16,7 +17,6 @@ const getters = {
 };
 const mutations = {
    authUser(state, userData) {
-      console.log(userData);
       state.token = userData.token;
       state.userData = userData.user;
       if (state.token) {
@@ -34,25 +34,45 @@ const actions = {
    signUp({ commit }, authData) {
       axios.post('/registerUser', authData).then(res => {
          console.log(res);
-         commit('regUser', res.data)
+         if(res.data.status) {
+            commit('regUser', res.data.result.user)
+         }
       }).catch(err => {
          console.log(err);
       });
    },
 
    login({ commit }, authData) {
+      console.log(this);
       axios.post('/user/login', authData).then(res => {
-         commit('authUser', res.data)
+         if(res.data.status) {
+            commit('authUser', res.data.result)
+         }
       }).catch(err => {
          console.log(err);
       });
    },
+
    logout() {
-      axios.post('/users/logout').then(res => {
+      axios.post('/users/logoutAll').then(res => {
          localStorage.clear();
          router.push('/login');
       }).catch(e => {
          console.log(e);
+      });
+   },
+   genResetToken({commit}, payload) {
+      axios.post('/users/resetPassToken', payload).then(res => {
+         console.log('res', res);
+      }).catch(e => {
+         console.log(e)
+      });
+   },
+   resetPassword({commit}, payload) {
+      axios.post('/users/reset-password', payload).then(res => {
+         console.log('reset-res', res);
+      }).catch(e => {
+         console.log(e)
       });
    }
 };

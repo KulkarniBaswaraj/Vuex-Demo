@@ -13,42 +13,27 @@
                   <div class="form-group">
                     <input
                       type="text"
-                      v-model="user.email"
+                      v-model="user.password"
                       class="form-control form-control-lg"
-                      id="exampleInputEmail1"
-                      placeholder="Username"
+                      id="password"
+                      placeholder="Password"
                     />
                   </div>
                   <div class="form-group">
                     <input
                       type="password"
-                      v-model="user.password"
+                      v-model="user.confPassword"
                       class="form-control form-control-lg"
-                      id="exampleInputPassword1"
-                      placeholder="Password"
+                      id="conf-password"
+                      placeholder="Confirm Password"
                     />
                   </div>
                   <div class="mt-3">
                     <button
                       type="button"
-                      @click="signIn"
+                      @click="resetPass"
                       class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"
-                    >SIGN IN</button>
-                  </div>
-                  <div class="my-2 d-flex justify-content-between align-items-center">
-                    <div class="form-check">
-                      <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input" /> Keep
-                        me signed in
-                        <i class="input-helper"></i>
-                      </label>
-                    </div>
-                    <a @click="nav('forgot-password')" class="auth-link text-black">Forgot password?</a>
-                  </div>
-
-                  <div class="text-center mt-4 font-weight-light">
-                    Don't have an account?
-                    <a @click="nav('sign-up')" class="text-primary">Create</a>
+                    >Done</button>
                   </div>
                 </form>
               </div>
@@ -69,8 +54,9 @@ export default {
   data() {
     return {
       user: {
-        email: "",
-        password: ""
+        password: "",
+        confPassword: "",
+        resetPassToken: ""
       }
     };
   },
@@ -84,15 +70,16 @@ export default {
     })
   },
   methods: {
-    nav(routeName) {
-      this.$router.push(routeName);
-    },
-    signIn() {
-      this.$store.dispatch("authModule/login", this.user);
+    resetPass() {
+      this.$store.dispatch("authModule/resetPassword", this.user);
     }
   },
   created() {
     localStorage.clear();
+    if(this.$route.params.token) {
+      this.user.resetPassToken = this.$route.params.token;
+    }
+    
   }
 };
 </script>
