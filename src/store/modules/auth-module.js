@@ -43,13 +43,14 @@ const actions = {
    },
 
    login({ commit }, authData) {
-      console.log(this);
-      axios.post('/user/login', authData).then(res => {
+       return axios.post('/user/login', authData).then(res => {
          if(res.data.status) {
-            commit('authUser', res.data.result)
+             commit('authUser', res.data.result)
          }
+         return res;
       }).catch(err => {
          console.log(err);
+         return err;
       });
    },
 

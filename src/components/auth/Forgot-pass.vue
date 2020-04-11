@@ -9,7 +9,7 @@
                 <div class="brand-logo text-center mb-3">
                   <img src="../../assets/images/logo.svg" />
                 </div>
-                <form class="pt-3">
+                <form class="pt-3" v-if="!isSuccess">
                     <p class="font-weight-light"> Enter your registered email address </p>
                   <div class="form-group">
                     <input
@@ -33,7 +33,16 @@
                     <a @click="nav()" class="text-primary">Login</a>
                   </div>
                 </form>
+                <div class="pt-3" v-if="isSuccess">
+                  <div class="msg-box">
+                    <div> <i class="mdi mdi-check-circle-outline"></i> </div>
+                    A password reset  message was sent to your email address. Please click the
+                    link to reset your password.
+                  </div>
+                  <button class="btn btn-block btn-primary  font-weight-medium auth-form-btn mt-4"> Back to Login </button>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -48,6 +57,7 @@
 export default {
   data() {
     return {
+        isSuccess: false,
         email: null
     };
   },
@@ -70,4 +80,17 @@ export default {
 </script>
 
 <style>
+.mdi-check-circle-outline {
+  font-size: 28px;
+}
+.msg-box {
+  text-align: center;
+    background: #dbffdb;
+    padding: 13px;
+    border-radius: 2px;
+    line-height: 20px;
+    color: #009688;
+    font-size: 15px;
+    font-weight: 100;
+}
 </style>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Bus from '../eventbus';
+import Bus from '../_utils/eventbus';
 
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:3000'
