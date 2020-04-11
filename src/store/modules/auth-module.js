@@ -6,49 +6,76 @@ import router from '../../router/index'
 Vue.use(Vuex);
 
 const state = {
+   userData: {},
    token: null,
-   userId: null
+   resetToken: null
 };
 const getters = {
    getNewUserDetail(state, getters) {
-      return `Username is : ${state.userId}` 
+      return `Username is : ${state.userData}` 
    }
 };
 const mutations = {
    authUser(state, userData) {
-      state.token = userData._id;
-      state.userId = userData.username;
-      if (state.token && state.userId) {
+      state.token = userData.token;
+      state.userData = userData.user;
+      if (state.token) {
          localStorage.setItem('token', state.token);
-         router.push('/dashboard');
+         axios.defaults.headers.common['Authorization'] = state.token;
+         router.push('/home');
       }
    },
+   regUser(state, userData) {
+      router.push('/login');
+   }
 };
 const actions = {
 
    signUp({ commit }, authData) {
-      axios.post('/users', authData).then(res => {
+      axios.post('/registerUser', authData).then(res => {
          console.log(res);
-         commit('authUser', {
-            _id: res.data._id,
-            username: res.data.username
-         })
+         if(res.data.status) {
+            commit('regUser', res.data.result.user)
+         }
       }).catch(err => {
          console.log(err);
       });
    },
 
    login({ commit }, authData) {
-      axios.post('/users', authData).then(res => {
-         console.log(res);
-         commit('authUser', {
-            _id: res.data._id,
-            username: res.data.username
-         })
+       return axios.post('/user/login', authData).then(res => {
+         if(res.data.status) {
+             commit('authUser', res.data.result)
+         }
+         return res;
       }).catch(err => {
          console.log(err);
+         return err;
       });
    },
+
+   logout() {
+      axios.post('/users/logoutAll').then(res => {
+         localStorage.clear();
+         router.push('/login');
+      }).catch(e => {
+         console.log(e);
+      });
+   },
+   genResetToken({commit}, payload) {
+      axios.post('/users/resetPassToken', payload).then(res => {
+         console.log('res', res);
+      }).catch(e => {
+         console.log(e)
+      });
+   },
+   resetPassword({commit}, payload) {
+      axios.post('/users/reset-password', payload).then(res => {
+         console.log('reset-res', res);
+      }).catch(e => {
+         console.log(e)
+      });
+   }
 };
 
 export default {

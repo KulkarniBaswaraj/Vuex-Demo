@@ -1,25 +1,25 @@
 import axios from 'axios';
+import Bus from '../_utils/eventbus';
 
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:3000'
 });
 
-axiosInstance.defaults.headers.common['token'] = "xoqttwqemqlnebibsqo123s";
+axiosInstance.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 axiosInstance.interceptors.request.use(reqConfig => {
-    //Do something before request is sent
+    Bus.$emit('isLoading', true);
     return reqConfig;
 }, err => {
+    Bus.$emit('isLoading', false);
     return Promise.reject(err);
 });
 
 axiosInstance.interceptors.response.use(resConfig => {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
+    Bus.$emit('isLoading', false);
     return resConfig;
 }, err => {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
+    Bus.$emit('isLoading', false);
     return Promise.reject(err);
 });
 

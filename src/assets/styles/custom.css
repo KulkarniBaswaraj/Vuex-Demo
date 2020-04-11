@@ -1,3 +1,4 @@
+
 a {
     cursor: pointer;
 }
@@ -9,4 +10,28 @@ a {
 }
 #header-s + .page-body-wrapper {
     padding-top: 70px;
+}
+.web-img-wrapper img {
+    width: 100%;
+}
+.btn:disabled {
+    cursor: not-allowed;
+}
+.form-control:focus {
+    border: 1px solid #e3abff;
+}
+.error {
+    position: relative;
+}
+.error input {
+    border: 1px solid #ffc10785 !important;
+}
+.error .err-box {
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    color: orange;
+    font-weight: 100;
+    position: absolute;
+    right: 1px;
+    bottom: -16px;
 }
