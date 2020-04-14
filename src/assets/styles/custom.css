@@ -17,6 +17,10 @@ a {
 .btn:disabled {
     cursor: not-allowed;
 }
+.form-check .form-check-label input {
+    width: 100%;
+    height: 100%;
+}
 .form-control:focus {
     border: 1px solid #e3abff;
 }
@@ -34,4 +38,41 @@ a {
     position: absolute;
     right: 1px;
     bottom: -16px;
+}
+.sidebar .nav .user-info {
+    padding-top: 18px;
+    align-items: center;
+}
+.user-info .user-circle {
+    border: 1px solid #a4a7ad;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 19px;
+    color: #ffffff;
+    background: #bf74ff;
+}
+.user-info .user-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    margin-left: 10px;
+    font-family: ubuntu-medium;
+}
+/*------------------------*/
+.swal-confirm {
+    max-width: 400px !important;
+}
+.swal-confirm .swal2-icon {
+    width: 45px;
+    height: 45px;
+    margin: 20px 0px;
+    margin-top: 15px;
+}
+.swal-confirm .swal2-icon-content {
+    font-size: 35px !important;
 }

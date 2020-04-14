@@ -32,15 +32,24 @@
 </template>
 
 <script>
+import mixins from "../../../_utils/mixins";
 export default {
+  mixins: [mixins],
   data() {
     return {
-
-    }
+      info: {
+        title: "",
+        text: "Are you sure want to Logout ?"
+      }
+    };
   },
   methods: {
     logout() {
-      this.$store.dispatch("authModule/logout");
+      this.swalConfirm(this.info).then(res => {
+        if (res.value) {
+          this.$store.dispatch("authModule/logout");
+        }
+      });
     }
   }
 };

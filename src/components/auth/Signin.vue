@@ -33,14 +33,14 @@
                     />
                     <div class="err-box" v-if="$v.user.password.$dirty && $v.user.password.$error">
                       <div v-if="!$v.user.password.required">Password required</div>
-                      <div v-else-if="$v.user.password.$invalid"> Invalid password</div>
+                      <div v-else-if="$v.user.password.$invalid">Invalid password</div>
                     </div>
                   </div>
                   <div class="mt-3">
                     <button
                       type="button"
                       :disabled="$v.user.$invalid"
-                      @click="signIn"
+                      @click="signIn()"
                       class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"
                     >SIGN IN</button>
                   </div>
@@ -111,7 +111,7 @@ export default {
     nav(routeName) {
       this.$router.push(routeName);
     },
-    signIn() {
+    signIn(form) {
       this.$store
         .dispatch("authModule/login", this.user)
         .then(res => {
