@@ -8,7 +8,8 @@ Vue.use(Vuex);
 const state = {
    userData: localStorage.getItem('userData') != undefined ? JSON.parse(localStorage.getItem('userData')) : {},
    token: null,
-   resetToken: null
+   resetToken: null,
+   toggleMenu: false
 };
 const getters = {
    getNewUserDetail(state, getters) {
@@ -43,6 +44,9 @@ const mutations = {
       setTimeout(() => {
          router.push('/login');
       }, 3000);
+   },
+   toggle(state) {
+      state.toggleMenu = !state.toggleMenu;
    }
 };
 const actions = {

@@ -16,7 +16,7 @@
                       v-model="$v.user.email.$model"
                       class="form-control form-control-lg"
                       id="exampleInputEmail1"
-                      placeholder="Username"
+                      placeholder="Email"
                     />
                     <div class="err-box" v-if="$v.user.email.$dirty && $v.user.email.$error">
                       <div v-if="!$v.user.email.required">Email required</div>
@@ -44,21 +44,15 @@
                       class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"
                     >SIGN IN</button>
                   </div>
-                  <div class="my-2 d-flex justify-content-between align-items-center">
-                    <div class="form-check">
-                      <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input" /> Keep
-                        me signed in
-                        <i class="input-helper"></i>
-                      </label>
-                    </div>
-                    <a @click="nav('forgot-password')" class="auth-link text-black">Forgot password?</a>
+                  <div class="my-2 d-flex justify-content-end align-items-center">
+                    <a @click="nav('forgot-password')" class="auth-link text-primary">Forgot password?</a>
                   </div>
 
-                  <div class="text-center mt-4 font-weight-light">
+                  <div class="text-center mt-3 font-weight-light">
                     Don't have an account?
                     <a @click="nav('sign-up')" class="text-primary">Create</a>
                   </div>
+                  
                 </form>
               </div>
             </div>

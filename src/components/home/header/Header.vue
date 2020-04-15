@@ -13,7 +13,7 @@
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item d-none d-lg-block" @click="logout">
+          <li class="nav-item d-lg-block" @click="logout">
             <a class="nav-link">
               <i class="mdi mdi-logout"></i>
             </a>
@@ -24,7 +24,7 @@
           type="button"
           data-toggle="offcanvas"
         >
-          <span class="mdi mdi-menu"></span>
+          <span class="mdi mdi-menu" @click="toggleMenu()"></span>
         </button>
       </div>
     </nav>
@@ -33,6 +33,8 @@
 
 <script>
 import mixins from "../../../_utils/mixins";
+import { mapState, mapGetters } from "vuex";
+
 export default {
   mixins: [mixins],
   data() {
@@ -43,7 +45,15 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapState({
+      toggle: state => state.authModule.toggleMenu
+    })
+  },
   methods: {
+    toggleMenu() {
+      this.$store.commit('authModule/toggle');
+    },
     logout() {
       this.swalConfirm(this.info).then(res => {
         if (res.value) {

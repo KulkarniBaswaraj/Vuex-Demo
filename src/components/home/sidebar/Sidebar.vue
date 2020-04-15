@@ -1,6 +1,6 @@
 <template>
   <section id="sidebar-block">
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <nav class="sidebar sidebar-offcanvas" :class="{'active': toggle}" id="sidebar">
           <ul class="nav">
             <li class="nav-item user-info d-flex">
               <div class="user-circle"> {{userAbbr}} </div>
@@ -21,10 +21,13 @@
 import { mapState, mapGetters } from "vuex";
 export default {
   computed: {
+    ...mapState({
+      toggle: state => state.authModule.toggleMenu
+    }),
     ...mapGetters("authModule", {
       userAbbr: "getUserAbbr",
       user: "getUserDetails"
-    })
+    }),
   }
 }
 </script>

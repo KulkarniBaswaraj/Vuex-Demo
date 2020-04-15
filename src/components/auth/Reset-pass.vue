@@ -22,7 +22,7 @@
                       <div v-if="!$v.user.password.required">Password required</div>
                       <div
                         v-else-if="$v.user.password.$invalid"
-                      >Password length should be atlest of 4 characters</div>
+                      >Password length should be atleast of 4 characters</div>
                     </div>
                   </div>
                   <div class="form-group" :class="{'error': $v.user.confPassword.$error}">

@@ -1,8 +1,12 @@
 import axios from 'axios';
 import Bus from '../_utils/eventbus';
 
+const origin = location.origin;
+const local = "http://localhost:8080";
+const baseUrl = origin == local ? "http://localhost:3000" : origin;
+
 const axiosInstance = axios.create({
-    baseURL: location.origin
+    baseURL: baseUrl
 });
 
 axiosInstance.defaults.headers.common['Authorization'] = localStorage.getItem('token');

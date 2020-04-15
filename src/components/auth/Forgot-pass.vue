@@ -9,8 +9,8 @@
                 <div class="brand-logo text-center mb-3">
                   <img src="../../assets/images/logo.svg" />
                 </div>
-                <form class="pt-3" v-if="!isSuccess">
-                  <p class="font-weight-light">Enter your registered email address</p>
+                <form class="pt-3 text-center" v-if="!isSuccess">
+                  <p class="font-weight-light text-center">Enter your registered email address</p>
                   <div class="form-group" :class="{'error': $v.email.$error}">
                     <input
                       type="text"
@@ -34,9 +34,10 @@
                   </div>
 
                   <div class="text-center mt-4 font-weight-light">
-                    Do you password?
+                    Do you remember password?
                     <a @click="nav()" class="text-primary">Login</a>
                   </div>
+                  
                 </form>
                 <div class="pt-3" v-if="isSuccess">
                   <div class="msg-box">

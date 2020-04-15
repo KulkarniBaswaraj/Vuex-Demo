@@ -2,6 +2,10 @@
 a {
     cursor: pointer;
 }
+.auth .auth-form-light {
+    max-width: 420px;
+    margin: auto;
+}
 .form-control {
     border: 1px solid #d7d7d7;
 }
@@ -38,13 +42,18 @@ a {
     position: absolute;
     right: 1px;
     bottom: -16px;
+} 
+.err-box div {
+    max-width: 99%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .sidebar .nav .user-info {
     padding-top: 18px;
     align-items: center;
 }
 .user-info .user-circle {
-    border: 1px solid #a4a7ad;
     width: 40px;
     height: 40px;
     display: flex;
@@ -53,7 +62,7 @@ a {
     border-radius: 50%;
     font-size: 19px;
     color: #ffffff;
-    background: #bf74ff;
+    background: #9c27b0;
 }
 .user-info .user-name {
     white-space: nowrap;
@@ -75,4 +84,25 @@ a {
 }
 .swal-confirm .swal2-icon-content {
     font-size: 35px !important;
+}
+
+/*--------------------------------------*/
+
+@media only screen and (max-width: 600px) {
+    .auth .auth-form-light {
+        padding: 30px 25px !important;
+    }
+    .auth .brand-logo {
+        margin-bottom: 0px;
+    }
+    .content-wrapper {
+        padding: 20px;
+    }
+    .auth form .form-group .form-control {
+        padding: 10px 15px;
+    }
+    .brand-logo + h6 {
+        margin-top: 18px;
+        font-size: 14px;
+    }
 }
