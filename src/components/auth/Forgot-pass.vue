@@ -7,9 +7,9 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo text-center mb-3">
-                  <img src="../../assets/images/logo.svg" />
+                  <img src="../../assets/images/logo.png" />
                 </div>
-                <form class="pt-3 text-center" v-if="!isSuccess">
+                <form class="pt-1 text-center" v-if="!isSuccess">
                   <p class="font-weight-light text-center">Enter your registered email address</p>
                   <div class="form-group" :class="{'error': $v.email.$error}">
                     <input
@@ -104,7 +104,7 @@ export default {
     }
   },
   created() {
-    localStorage.clear();
+    sessionStorage.clear();
   }
 };
 </script>

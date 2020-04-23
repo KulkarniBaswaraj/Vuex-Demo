@@ -1,0 +1,62 @@
+.auth .brand-logo img {
+    width: auto;
+}
+
+.auth .brand-logo {
+    margin-bottom: 0px !important;
+}
+
+.navbar .navbar-brand-wrapper .navbar-brand img {
+    width: auto;
+    max-width: 100%;
+    height: 65px;
+}
+
+.navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini img {
+    width: auto;
+}
+
+/*----------
+#083b66 - dark
+#4c96d7 - medium
+#8dcaff - Light
+---------*/
+
+.btn-gradient-primary:not([disabled]):not(.disabled).active, 
+.btn-gradient-primary:not([disabled]):not(.disabled):active, 
+.show>.btn-gradient-primary.dropdown-toggle, 
+.btn-gradient-primary {
+    background: linear-gradient(to right, #4c96d7, #083b66);
+}
+
+.form-check .form-check-label input[type=checkbox]+.input-helper:before{
+    border: 2px solid #4c96d7;
+}
+
+.vdp-datepicker__calendar .cell.selected {
+    background: linear-gradient(to right, #4c96d7, #083b66) !important;
+    border: 0px;
+}
+.form-check .form-check-label input[type=checkbox]:checked+.input-helper:before {
+    border: 0px solid #4c96d7;
+    background: linear-gradient(to right, #4c96d7, #083b66);
+    /* color: #4c96d7 !important; */
+}
+
+.btn i,
+.loader+p, .sidebar .nav .nav-item .router-link-active a i.menu-icon, .sidebar .nav .nav-item .router-link-active a, a.text-primary:hover, .text-primary {
+    color: #4c96d7 !important;
+}
+
+.loader {
+    border: 3px solid #8dcaff;
+    border-top: 3px solid #083b66;
+}
+
+.form-control:focus {
+    border: 1px solid #8dcaff !important;
+}
+
+.user-info .user-circle {
+    background: #083b66 !important;
+}

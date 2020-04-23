@@ -7,7 +7,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo text-center mb-3">
-                  <img src="../../assets/images/logo.svg" />
+                  <img src="../../assets/images/logo.png" />
                 </div>
                 <form class="pt-3">
                   <div class="form-group" :class="{'error': $v.user.email.$error}">
@@ -121,7 +121,7 @@ export default {
     }
   },
   created() {
-    localStorage.clear();
+    sessionStorage.clear();
   }
 };
 </script>

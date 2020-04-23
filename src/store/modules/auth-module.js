@@ -5,8 +5,18 @@ import router from '../../router/index'
 
 Vue.use(Vuex);
 
+const getUserData = () => {
+
+   try {
+      if (JSON.parse(sessionStorage.getItem('userData'))) {
+         return JSON.parse(sessionStorage.getItem('userData'));
+      }
+   } catch (error) {
+      router.push('/login');
+   }
+}
 const state = {
-   userData: localStorage.getItem('userData') != undefined ? JSON.parse(localStorage.getItem('userData')) : {},
+   userData: getUserData(),
    token: null,
    resetToken: null,
    toggleMenu: false
@@ -33,12 +43,15 @@ const mutations = {
    authUser(state, userData) {
       state.token = userData.token;
       state.userData = userData.user;
-      localStorage.setItem('userData', JSON.stringify(userData.user));
+      sessionStorage.setItem('userData', JSON.stringify(userData.user));
       if (state.token) {
-         localStorage.setItem('token', state.token);
+         sessionStorage.setItem('token', state.token);
          axios.defaults.headers.common['Authorization'] = state.token;
          router.push('/home');
       }
+   },
+   setUser(state, userData) {
+      sessionStorage.setItem('userData', JSON.stringify(userData));
    },
    regUser(state, userData) {
       setTimeout(() => {
@@ -79,7 +92,7 @@ const actions = {
 
    logout() {
       axios.post('/users/logoutAll').then(res => {
-         localStorage.clear();
+         sessionStorage.clear();
          router.push('/login');
       }).catch(err => err);
    },
@@ -93,7 +106,7 @@ const actions = {
          return err;
       }
    },
-   
+
    async resetPassword({ commit }, payload) {
       try {
          const res = await axios.post('/users/reset-password', payload);
@@ -102,7 +115,20 @@ const actions = {
       catch (err) {
          return err;
       }
-   }
+   },
+
+   async updateUser({ commit }, authData) {
+      try {
+         const res = await axios.patch('/users/me', authData);
+         if (res.status) {
+            commit('setUser', res.result);
+         }
+         return res;
+      }
+      catch (err) {
+         return err;
+      }
+   },
 };
 
 export default {

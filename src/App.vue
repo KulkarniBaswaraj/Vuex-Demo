@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import Bus from './_utils/eventbus';
+import Bus from "./_utils/eventbus";
 import Loader from "./components/common/Loader";
 export default {
   components: {
@@ -26,15 +26,16 @@ export default {
         this.refCount--;
         this.isLoading = this.refCount > 0;
       }
-    }
+    },
+    
   },
   mounted() {
-    Bus.$on('isLoading', bool => {
+    Bus.$on("isLoading", bool => {
       this.setLoading(bool);
     });
   },
   beforeDestroy() {
-    Bus.$off('isLoading');
+    Bus.$off("isLoading");
   }
 };
 </script>
@@ -43,5 +44,5 @@ export default {
 @import "assets/styles/materialdesignicons.min.css";
 @import "assets/styles/main.css";
 @import "assets/styles/custom.css";
-
+@import "assets/styles/theme.css";
 </style>

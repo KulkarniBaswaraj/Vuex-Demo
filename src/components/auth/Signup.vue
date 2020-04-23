@@ -7,12 +7,12 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo text-center">
-                  <img src="../../assets/images/logo.svg" />
+                  <img src="../../assets/images/logo.png" />
                 </div>
                 <!-- <h4>New here?</h4> -->
                 <h6
                   class="font-weight-light text-center"
-                >Signing up is easy. It only takes a few steps</h6>
+                >Signing up is easy. It takes only few steps</h6>
                 <form class="pt-3">
                   <div class="form-group" :class="{'error': $v.user.name.$error}">
                     <input
@@ -98,7 +98,11 @@ export default {
       user: {
         name: null,
         email: null,
-        password: null
+        password: null,
+        dob: null,
+        phone: null,
+        city: null,
+        pin: null
       },
       hasCheckdTc: false
     };

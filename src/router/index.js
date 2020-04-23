@@ -6,10 +6,18 @@ import ForgotPass from "../components/auth/Forgot-pass.vue";
 import ResetPass from "../components/auth/Reset-pass.vue";
 import Home from "../components/home/Home.vue"
 import Dashboard from "../components/dashboard/Dashboard.vue";
+import Profile from "../components/profile/Profile.vue";
+import Index from "../components/landing/Index.vue";
+
 
 Vue.use(VueRouter);
 
 const routes = [
+  // {
+  //   path: '/',
+  //   name: 'landing',
+  //   component: Index
+  // },
   {
     path: "/login",
     name: "login",
@@ -43,6 +51,12 @@ const routes = [
         component: Dashboard,
         meta: { requiresAuth: true }
       },  
+      {
+        path: "my-profile",
+        name: "profile",
+        component: Profile,
+        meta: { requiresAuth: true }
+      },  
     ]
   },
   {
@@ -57,7 +71,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!localStorage.getItem('token')) {
+    if (!sessionStorage.getItem('token')) {
       next({
         path: '/login',
         query: { redirect: to.fullPath }

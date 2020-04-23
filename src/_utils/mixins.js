@@ -39,8 +39,8 @@ export default {
             icon: 'question',
             customClass: 'swal-confirm',
             showCancelButton: true,
-            confirmButtonColor: '#bf74ff',
-            cancelButtonColor: '#ff5722',
+            confirmButtonColor: '#083b66',
+            cancelButtonColor: '#9E9E9E',
             confirmButtonText: 'Yes',
             cancelButtonText: 'No'
          }).then((result) => result).catch(err => err);

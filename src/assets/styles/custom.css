@@ -1,39 +1,69 @@
-
+body {
+    color: #1f2a33;
+}
+.content-wrapper {
+    background: #f7f7f7;
+}
 a {
     cursor: pointer;
 }
+
 .auth .auth-form-light {
     max-width: 420px;
     margin: auto;
+    padding-top: 25px !important;
 }
+
 .form-control {
-    border: 1px solid #d7d7d7;
+    border: 1px solid #c2c2c2;
+    border-radius: 0px;
+    font-size: 14px;
+    letter-spacing: .8px;
+    font-weight: normal;
 }
+
+.sidebar .nav .nav-item .router-link-active a {
+    color: #b66dff;
+}
+
+.sidebar .nav .nav-item .router-link-active a i.menu-icon {
+    color: #b66dff;
+}
+
 .navbar {
     box-shadow: 8px -2px 8px 2px #dfdfdf;
 }
-#header-s + .page-body-wrapper {
+
+#header-s+.page-body-wrapper {
     padding-top: 70px;
 }
+
 .web-img-wrapper img {
     width: 100%;
 }
+
 .btn:disabled {
     cursor: not-allowed;
 }
+
 .form-check .form-check-label input {
     width: 100%;
     height: 100%;
 }
+
 .form-control:focus {
     border: 1px solid #e3abff;
 }
+
 .error {
     position: relative;
 }
+
+.error input:focus,
 .error input {
     border: 1px solid #ffc10785 !important;
 }
+
 .error .err-box {
     font-size: 12px;
     letter-spacing: 0.2px;
@@ -42,17 +72,22 @@ a {
     position: absolute;
     right: 1px;
     bottom: -16px;
-} 
+    width: 100%;
+    text-align: right;
+}
+
 .err-box div {
     max-width: 99%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .sidebar .nav .user-info {
     padding-top: 18px;
     align-items: center;
 }
+
 .user-info .user-circle {
     width: 40px;
     height: 40px;
@@ -60,10 +95,12 @@ a {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    font-size: 19px;
+    font-size: 18px;
+    letter-spacing: 1px;
     color: #ffffff;
     background: #9c27b0;
 }
+
 .user-info .user-name {
     white-space: nowrap;
     overflow: hidden;
@@ -72,16 +109,139 @@ a {
     margin-left: 10px;
     font-family: ubuntu-medium;
 }
+
+.sidebar .nav .nav-item a {
+    text-decoration: none !important;
+}
+
+.profile-card .user-icon {
+    background: white;
+    width: 88px;
+    height: 88px;
+    /* border: 1px solid gray; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    box-shadow: 0px -1px 9px 0px lightgrey;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    color: #083b66;
+}
+
+.profile-card .user-icon i {
+    font-size: 65px;
+}
+
+#breadcrumb h3 {
+    margin: 0px;
+}
+
+#breadcrumb {
+    transform: translateY(-20px);
+    margin-bottom: 10px;
+}
+
+#profile-page .user-data {
+    margin-top: 20px;
+}
+
+.user-data div {
+    max-width: 99%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.user-data div:nth-child(1) {
+    margin-bottom: 5px;
+    color: #3e4b5b;
+}
+
+.user-data div:nth-child(2) {
+    font-weight: 600;
+}
+
+
+.edit-icon {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    font-size: 18px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+.btn i {
+    font-size: 20px;
+}
+.modal-content {
+    background-color: white;
+    border-radius: 2px;
+}
+.modal-header {
+    border: 0;
+}
+.modal-footer {
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.modal-footer .btn {
+    margin: 0px;
+    border:0px;
+    border-radius: 0px;
+}
+.modal-md {
+    max-width: 400px;
+}
+.modal-dialog.vertical {
+    margin-right: 0;
+    height: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+}
+.modal.fade:not(.in) .modal-dialog {
+    -webkit-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
+.modal-body {
+    overflow: auto;
+}
+.vdp-datepicker input{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    right: 0;
+    top: 0;
+    border: 0px;
+    padding-left: 20px;
+}
+.vdp-datepicker__calendar {
+    left: 0px;
+    top: 44px;
+}
+.vdp-datepicker__calendar .cell.selected {
+    color:white;
+}
 /*------------------------*/
+
 .swal-confirm {
     max-width: 400px !important;
 }
+
 .swal-confirm .swal2-icon {
     width: 45px;
     height: 45px;
     margin: 20px 0px;
     margin-top: 15px;
 }
+
 .swal-confirm .swal2-icon-content {
     font-size: 35px !important;
 }
@@ -91,18 +251,33 @@ a {
 @media only screen and (max-width: 600px) {
     .auth .auth-form-light {
         padding: 30px 25px !important;
+        padding-top: 15px !important;
     }
     .auth .brand-logo {
         margin-bottom: 0px;
     }
     .content-wrapper {
-        padding: 20px;
+        padding: 15px;
     }
     .auth form .form-group .form-control {
         padding: 10px 15px;
     }
-    .brand-logo + h6 {
-        margin-top: 18px;
+    .brand-logo+h6 {
+        margin-top: 10px;
         font-size: 14px;
+    }
+    #breadcrumb {
+        transform: translateY(-4px);
+    }
+    #breadcrumb h3 {
+        font-size: 21px;
+    }
+    .profile-card .user-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .profile-card .user-icon i {
+        font-size: 32px;
+        ;
     }
 }

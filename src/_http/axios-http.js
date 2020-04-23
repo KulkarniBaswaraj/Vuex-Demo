@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
     baseURL: baseUrl
 });
 
-axiosInstance.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+axiosInstance.defaults.headers.common['Authorization'] = sessionStorage.getItem('token');
 
 axiosInstance.interceptors.request.use(reqConfig => {
     Bus.$emit('isLoading', true);
