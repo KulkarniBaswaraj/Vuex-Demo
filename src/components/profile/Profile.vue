@@ -6,14 +6,14 @@
       </div>
       <div class="card-body">
         <div class="row mt-2">
-          <div class="col-md-4" v-for="(data, index) in Object.keys(user)" :key="index">
+          <div class="col-md-4" v-for="(data, index) in Object.keys(userData)" :key="index">
             <div class="user-data">
               <div>{{ getLabels(data) }}</div>
               <div>
-                <span v-if="user[data] && data != 'dob'">{{ user[data] }}</span>
+                <span v-if="userData[data] && data != 'dob'">{{ userData[data] }}</span>
                 <span
-                  v-else-if="user[data] && data == 'dob'"
-                >{{ user[data] | moment("DD MMM YYYY")}}</span>
+                  v-else-if="userData[data] && data == 'dob'"
+                >{{ userData[data] | moment("DD MMM YYYY")}}</span>
                 <span class="pl-1" v-else>- -</span>
               </div>
             </div>
@@ -40,7 +40,6 @@
             <!-- Modal Header -->
             <div class="modal-header">
               <h4 class="modal-title">Edit Profile</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
@@ -164,6 +163,7 @@ export default {
   },
   data() {
     return {
+      userData: {},
       user: {
         name: null,
         email: null,
@@ -209,8 +209,7 @@ export default {
   },
   methods: {
     updateUser() {
-      const payload = JSON.parse(JSON.stringify(this.user));
-      this.initLoad();
+      const payload = this.rmRef(this.user);
       delete payload.email;
       this.$store
         .dispatch("authModule/updateUser", payload)
@@ -229,7 +228,6 @@ export default {
     onDobSelect() {
       setTimeout(() => {
         this.user.dob = new Date(this.user.dob).getTime();
-        console.log(this.user.dob);
       }, 50);
     },
     populateData(dbUser) {
@@ -241,6 +239,7 @@ export default {
           this.user[key] = null;
         }
       });
+      this.userData = this.rmRef(this.user);
     },
     getLabels(label) {
       const labels = {

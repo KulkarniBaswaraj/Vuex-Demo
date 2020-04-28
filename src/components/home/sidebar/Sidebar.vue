@@ -39,6 +39,11 @@ export default {
           path: "/home/my-profile",
           name: "My Profile",
           icon: "mdi-account"
+        },
+        {
+          path: "/home/user-management",
+          name: "User Management",
+          icon: "mdi-account-multiple"
         }
       ]
     };

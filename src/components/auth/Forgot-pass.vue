@@ -47,7 +47,7 @@
                     link to reset your password.
                   </div>
                   <button @click="nav()"
-                    class="btn btn-block btn-primary font-weight-medium auth-form-btn mt-4"
+                    class="btn btn-block btn-gradient-primary font-weight-medium auth-form-btn mt-4"
                   >Back to Login</button>
                 </div>
               </div>

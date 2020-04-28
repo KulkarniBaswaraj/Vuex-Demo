@@ -44,15 +44,19 @@
                       class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"
                     >SIGN IN</button>
                   </div>
-                  <div class="my-2 d-flex justify-content-end align-items-center">
-                    <a @click="nav('forgot-password')" class="auth-link text-primary">Forgot password?</a>
-                  </div>
 
                   <div class="text-center mt-3 font-weight-light">
                     Don't have an account?
                     <a @click="nav('sign-up')" class="text-primary">Create</a>
                   </div>
-                  
+
+                  <div class="mt-3 d-flex justify-content-center align-items-center">
+                    <a
+                      @click="nav('forgot-password')"
+                      class="auth-link text-primary"
+                    >Forgot password?</a>
+                  </div>
+
                 </form>
               </div>
             </div>

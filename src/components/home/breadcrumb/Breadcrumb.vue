@@ -15,7 +15,8 @@ export default {
     getPageName(pageName) {
       const names = {
         profile: "My Profile",
-        dashboard: "Dashboard"
+        dashboard: "Dashboard",
+        userMgmt: "User Management"
       };
       return names[pageName] || pageName;
     }

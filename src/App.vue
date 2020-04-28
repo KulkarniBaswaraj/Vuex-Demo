@@ -5,8 +5,12 @@
   </div>
 </template>
 <script>
+import Vue from 'vue';
 import Bus from "./_utils/eventbus";
 import Loader from "./components/common/Loader";
+import Paginate from 'vuejs-paginate';
+Vue.component('paginate', Paginate)
+
 export default {
   components: {
     "app-loader": Loader

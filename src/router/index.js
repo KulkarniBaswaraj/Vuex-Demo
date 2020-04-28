@@ -8,6 +8,7 @@ import Home from "../components/home/Home.vue"
 import Dashboard from "../components/dashboard/Dashboard.vue";
 import Profile from "../components/profile/Profile.vue";
 import Index from "../components/landing/Index.vue";
+import UserMgmt from "../components/UserMgmt/UserMgmt.vue";
 
 
 Vue.use(VueRouter);
@@ -49,6 +50,12 @@ const routes = [
         path: "dashboard",
         name: "dashboard",
         component: Dashboard,
+        meta: { requiresAuth: true }
+      },
+      {
+        path: "user-management",
+        name: "userMgmt",
+        component: UserMgmt,
         meta: { requiresAuth: true }
       },  
       {

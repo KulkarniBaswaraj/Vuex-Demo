@@ -108,7 +108,7 @@ export default {
           this.user = {};
           this.$v.$reset();
           setTimeout(() => {
-            $router.push("/login");
+            this.$router.push("/login");
           }, 2000);
         } else {
           this.fail(null, res.error);

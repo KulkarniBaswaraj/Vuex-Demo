@@ -68,7 +68,7 @@ const actions = {
       try {
          const res = await axios.post('/registerUser', authData);
          if (res.status) {
-            commit('regUser', res.result.user);
+            commit('regUser', res.data.result.user);
          }
          return res;
       }
@@ -81,7 +81,7 @@ const actions = {
       try {
          const res = await axios.post('/user/login', authData);
          if (res.status) {
-            commit('authUser', res.result);
+            commit('authUser', res.data.result);
          }
          return res;
       }
@@ -121,7 +121,7 @@ const actions = {
       try {
          const res = await axios.patch('/users/me', authData);
          if (res.status) {
-            commit('setUser', res.result);
+            commit('setUser', res.data.result);
          }
          return res;
       }

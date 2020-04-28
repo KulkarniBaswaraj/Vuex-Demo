@@ -44,6 +44,9 @@ export default {
             confirmButtonText: 'Yes',
             cancelButtonText: 'No'
          }).then((result) => result).catch(err => err);
+      },
+      rmRef(obj) {
+         return JSON.parse(JSON.stringify(obj));
       }
    }
 }
